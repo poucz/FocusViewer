@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 Item {
     property var focusPoint:    Qt.point(20,80)
+    property var focusPointPercent:    Qt.point(20,80)
     property var focusSize:     Qt.size(10, 10)
 
     property alias imgPath: img.source
@@ -13,7 +14,7 @@ Item {
     }
 
     function printValues(){
-        console.log("Rect on pos: "+focusPoint)
+        console.log("Rect on pos: "+focusPointPercent+"%")
         console.log("Img orig size:   "+img.sourceSize.width+","+img.sourceSize.height)
         console.log("Img current size :"+img.paintedWidth+","+img.paintedHeight)
         console.log("Rect act pos: "+focus.x+","+focus.y)
@@ -27,7 +28,7 @@ Item {
             text: qsTr("text")
         }
         Text {
-            text: focusPoint.x +","+focusPoint.y
+            text: focusPointPercent.x +"%,"+focusPointPercent.y+"%"
         }
         Text {
             text: focusSize.width +"x"+focusSize.height
@@ -59,8 +60,8 @@ Item {
 
         Rectangle {
             id: focus
-            x:((imgCanvas.width-img.paintedWidth)/2)   + ((focusPoint.x*img.paintedWidth)/100)
-            y:((imgCanvas.height-img.paintedHeight)/2) + ((focusPoint.y*img.paintedHeight)/100)
+            x:((imgCanvas.width-img.paintedWidth)/2)   + ((focusPointPercent.x*img.paintedWidth)/100)
+            y:((imgCanvas.height-img.paintedHeight)/2) + ((focusPointPercent.y*img.paintedHeight)/100)
             width: 100
             height: 50
             border.color: "red"

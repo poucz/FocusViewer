@@ -14,6 +14,9 @@ class ImageInfo : public QObject
 
     Q_PROPERTY(QPoint   focusPoint MEMBER focusPoint NOTIFY infoChange);
     Q_PROPERTY(QSize    focusSize  MEMBER focusSize  NOTIFY infoChange);
+
+
+    Q_PROPERTY(QPoint   focusPointPercent MEMBER focusPoint NOTIFY infoChange);
 public:
     explicit ImageInfo(QObject *parent = nullptr);
     ~ImageInfo();
