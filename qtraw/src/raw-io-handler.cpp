@@ -109,7 +109,6 @@ bool RawIOHandler::canRead() const
 bool RawIOHandler::canRead(QIODevice *device)
 {
     if (!device) {
-        qInfo()<<"No device - canRead===false ";
         return false;
     }
     RawIOHandler handler;

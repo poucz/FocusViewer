@@ -42,8 +42,6 @@ public:
 
 QStringList RawPlugin::keys() const
 {
-    qInfo()<<"Print keys...";
-
     return QStringList() <<
         QLatin1String("crw") << QLatin1String("cr2") <<
         QLatin1String("arw") <<
@@ -60,24 +58,20 @@ RawPlugin::capabilities(QIODevice *device, const QByteArray &format) const
     if (keys().contains(format) ||
         format == "tif" ||
         format == "tiff")
-        qInfo()<<"tif----canRead";
         return Capabilities(CanRead|CanWrite);
     if (!format.isEmpty()){
-        qInfo()<<"cannot read";
         return 0;
     }
 
     Capabilities cap;
     if (device->isReadable() && RawIOHandler::canRead(device))
         cap |= CanRead;
-    qInfo()<<"canRead caps:"<<cap;
     return cap;
 }
 
 QImageIOHandler *RawPlugin::create(QIODevice *device,
                                    const QByteArray &format) const
 {
-    qInfo()<<"create ImageRead "<<format;
     RawIOHandler *handler = new RawIOHandler();
     handler->setDevice(device);
     handler->setFormat(format);
