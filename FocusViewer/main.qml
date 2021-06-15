@@ -19,6 +19,7 @@ Window {
             }else{//relativni cesta
                 file= "file:///" + applicationDirPath+"/"+Qt.application.arguments[1]
             }
+
             //
             console.log("Set default image: "+file)
             stack.push(0,preview,{images:[file]})

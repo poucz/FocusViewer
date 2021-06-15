@@ -1,3 +1,4 @@
+#include <QDir>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
@@ -17,12 +18,8 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-
-    //ImageInfo * img_info=new ImageInfo();
-    //
-    //engine.rootContext()->setContextProperty("imgInfo", img_info);
-
-    engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
+    //engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
+    engine.rootContext()->setContextProperty("applicationDirPath", QDir::currentPath());
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
