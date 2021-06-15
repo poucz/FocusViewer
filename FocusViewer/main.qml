@@ -11,7 +11,8 @@ Window {
 
 
     Component.onCompleted: {
-        if(Qt.application.arguments.length>=1){
+        if(Qt.application.arguments.length>1){
+            console.log("Number of args: "+Qt.application.arguments.length)
             var file= "file:///" + applicationDirPath+"/"+Qt.application.arguments[1]
             console.log("Set default image: "+file)
             stack.push(0,preview,{images:[file]})
