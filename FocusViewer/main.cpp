@@ -12,14 +12,17 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+    app.setOrganizationName("jop");
+    app.setOrganizationDomain("jop.cz");
 
     QQmlApplicationEngine engine;
 
 
-    ImageInfo * img_info=new ImageInfo();
+    //ImageInfo * img_info=new ImageInfo();
+    //
+    //engine.rootContext()->setContextProperty("imgInfo", img_info);
 
-    engine.rootContext()->setContextProperty("imgInfo", img_info);
-
+    engine.rootContext()->setContextProperty("applicationDirPath", QGuiApplication::applicationDirPath());
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

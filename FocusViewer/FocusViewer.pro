@@ -1,4 +1,5 @@
 QT += quick
+QT += quickcontrols2
 
 CONFIG += c++11
 
@@ -11,6 +12,13 @@ SOURCES += \
         main.cpp
 
 RESOURCES += qml.qrc
+
+
+CONFIG += qmltypes
+QML_IMPORT_NAME = app.jopr.cz
+QML_IMPORT_MAJOR_VERSION = 1
+
+
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =

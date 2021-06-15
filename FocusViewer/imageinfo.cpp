@@ -70,10 +70,8 @@ void ImageInfo::parserAFAreas(const QString &data){
         return;
     }
 
-    focusPoint.setX(list.at(0));
-    focusPoint.setY(list.at(1));
-    focusSize.setWidth(list.at(2));
-    focusSize.setHeight(list.at(3));
+    focusSize.setWidth(list.at(2)-list.at(0));
+    focusSize.setHeight(list.at(3)-list.at(1));
 }
 
 
@@ -96,6 +94,4 @@ void ImageInfo::parserAFPointSelected(const QString &data){
 
     focusPointPercent.setX(list.at(0));
     focusPointPercent.setY(list.at(1));
-    focusSize.setWidth(list.at(2));
-    focusSize.setHeight(list.at(3));
 }

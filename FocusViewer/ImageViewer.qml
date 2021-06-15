@@ -1,16 +1,21 @@
 import QtQuick 2.0
 
+import app.jopr.cz 1.0
+
+
 Item {
     //property var focusPoint:        Qt.point(4608/2,3456/2)
     //property var focusPointPercent: Qt.point(50,50)
     //property var focusSize:         Qt.size(10, 10)
 
-    property var focusPoint:        imgInfo.focusPoint
     property var focusPointPercent: imgInfo.focusPointPercent
     property var focusSize:         imgInfo.focusSize
 
     property alias imgPath: img.source
 
+    ImageInfo{
+        id: imgInfo
+    }
 
     onImgPathChanged: {
         console.log("new image was loadeed "+imgPath)
@@ -34,38 +39,23 @@ Item {
     Column{
         z:1
         Text {
-            text: qsTr("text")
+            text: imgPath
         }
         Text {
             text: focusPointPercent.x +"%,"+focusPointPercent.y+"%"
         }
-        Text {
-            text: focusPoint.x +","+focusPoint.y
-        }
+
         Text {
             text: focusSize.width +"x"+focusSize.height
         }
-
-        Rectangle{
-            width: 50
-            height: 50
-            color: "green"
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    printValues()
-                }
-            }
-        }
     }
-
-
 
     Item{
         id:imgCanvas
         anchors.fill: parent
         Image {
             id: img
+            asynchronous: true
             anchors.fill: parent
             fillMode: Image.PreserveAspectFit
         }
@@ -77,17 +67,6 @@ Item {
             width: focusSize.width
             height: focusSize.height
             border.color: "red"
-            border.width: 2
-            color: "transparent"
-        }
-
-        Rectangle {
-            id: focus2
-            x: (((imgCanvas.width-img.paintedWidth)/2) +  (img.paintedWidth/img.sourceSize.width)*focusPoint.x )+1
-            y: (((imgCanvas.height-img.paintedHeight)/2)+(img.paintedHeight/img.sourceSize.height)*focusPoint.y) +1
-            width: focusSize.width
-            height: focusSize.height
-            border.color: "green"
             border.width: 2
             color: "transparent"
         }

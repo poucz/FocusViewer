@@ -6,6 +6,7 @@
 #include <QSize>
 
 #include <QProcess>
+#include <qqml.h>
 
 
 class ImageInfo : public QObject
@@ -13,9 +14,9 @@ class ImageInfo : public QObject
     Q_OBJECT
 
     Q_PROPERTY(QPoint   focusPointPercent   MEMBER focusPointPercent NOTIFY infoChange);
-    Q_PROPERTY(QPoint   focusPoint          MEMBER focusPoint        NOTIFY infoChange);
     Q_PROPERTY(QSize    focusSize           MEMBER focusSize         NOTIFY infoChange);
 
+    QML_ELEMENT
 
 public:
     explicit ImageInfo(QObject *parent = nullptr);

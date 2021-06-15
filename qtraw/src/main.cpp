@@ -54,7 +54,6 @@ QStringList RawPlugin::keys() const
 QImageIOPlugin::Capabilities
 RawPlugin::capabilities(QIODevice *device, const QByteArray &format) const
 {
-    qInfo()<<"Print Capabilities "<<format;
     if (keys().contains(format) ||
         format == "tif" ||
         format == "tiff")
