@@ -12,11 +12,11 @@ class ImageInfo : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QPoint   focusPoint MEMBER focusPoint NOTIFY infoChange);
-    Q_PROPERTY(QSize    focusSize  MEMBER focusSize  NOTIFY infoChange);
+    Q_PROPERTY(QPoint   focusPointPercent   MEMBER focusPointPercent NOTIFY infoChange);
+    Q_PROPERTY(QPoint   focusPoint          MEMBER focusPoint        NOTIFY infoChange);
+    Q_PROPERTY(QSize    focusSize           MEMBER focusSize         NOTIFY infoChange);
 
 
-    Q_PROPERTY(QPoint   focusPointPercent MEMBER focusPoint NOTIFY infoChange);
 public:
     explicit ImageInfo(QObject *parent = nullptr);
     ~ImageInfo();
@@ -26,9 +26,15 @@ public:
 
 private:
     QPoint focusPoint;
+    QPoint focusPointPercent;
     QSize focusSize;
 
     QProcess process;
+
+
+    void parserAFAreas(const QString & data);
+    void parserAFPointSelected(const QString & data);
+
 
 signals:
     void infoChange();
