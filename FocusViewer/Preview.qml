@@ -5,7 +5,9 @@ import QtQuick.Dialogs 1.3
 Item {
     property var  images: []
     property alias model: grid.model
+    property alias imagesFolder: fileDialog.folder
     signal showDetail(var fileName)
+
 
 
     id:root
@@ -28,7 +30,7 @@ Item {
         id: fileDialog
         selectMultiple:true
         title: "Please choose a file"
-        //folder: "test_data" //shortcuts.home
+        //folder: "file:///media/data/Obrázky/Anežka/nerostrideno/P5210011.ORF"
         //Component.onCompleted: visible = true
         onAccepted: {
             grid.model=null

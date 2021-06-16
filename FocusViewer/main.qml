@@ -22,7 +22,8 @@ Window {
 
             //
             console.log("Set default image: "+file)
-            stack.push(0,preview,{images:[file]})
+            stack.push(0,preview,{images:[file],imagesFolder:file.split("/").slice(0,-1).join("/")})
+            //stack.push(0,preview,{images:[file]})
             stack.push(detail, {"imgPath": file})
         }
     }
