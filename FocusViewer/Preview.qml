@@ -28,7 +28,7 @@ Item {
         id: fileDialog
         selectMultiple:true
         title: "Please choose a file"
-        folder: "test_data" //shortcuts.home
+        //folder: "test_data" //shortcuts.home
         //Component.onCompleted: visible = true
         onAccepted: {
             grid.model=null
